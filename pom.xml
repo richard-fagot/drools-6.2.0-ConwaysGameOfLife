@@ -7,7 +7,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>drools-6.2.0-dt-jbpmn</name>
+  <name>drools-6.2.0-ConwaysGameOfLife</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -30,34 +30,13 @@
 			<artifactId>drools-compiler</artifactId>
 			<version>6.2.0.Final</version>
 		</dependency>
-		<!-- <dependency> <groupId>org.drools</groupId> <artifactId>drools-simulator</artifactId> 
-			<version>6.2.0.Final</version> <scope>compile</scope> </dependency> -->
-		<dependency>
-			<groupId>org.drools</groupId>
-			<artifactId>drools-decisiontables</artifactId>
-			<version>6.2.0.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.drools</groupId>
-			<artifactId>drools-templates</artifactId>
-			<version>6.2.0.Final</version>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.kie</groupId>
 			<artifactId>kie-internal</artifactId>
 			<version>6.2.0.Final</version>
 		</dependency>
-		<!-- -->
-		<dependency>
-			<groupId>org.jbpm</groupId>
-			<artifactId>jbpm-flow-builder</artifactId>
-			<version>6.2.0.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jbpm</groupId>
-			<artifactId>jbpm-bpmn2</artifactId>
-			<version>6.2.0.Final</version>
-		</dependency>
+		
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
