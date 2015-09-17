@@ -1,0 +1,31 @@
+package com.softeam.rules.visa
+
+import rfagot.examples.drools_620_conwaysgameoflife.model.Cell;
+
+rule "Makes cell alive if she has exactly three living neighbours"
+dialect "mvel"
+
+	when
+		currentCell : Cell(state == Cell.DEAD)
+		nbNeighbours : Number( this == 3) 
+				from accumulate (
+		$cell : Cell((state == Cell.ALIVE) &&
+					(
+		              ((posX == (currentCell.posX - 1)) && (posY == (currentCell.posY + 1)))
+		           || ((posX == currentCell.posX)       && (posY == (currentCell.posY + 1)))
+		           || ((posX == (currentCell.posX + 1)) && (posY == (currentCell.posY + 1)))
+		           
+		           || ((posX == (currentCell.posX - 1)) && (posY == currentCell.posY))
+		           || ((posX == (currentCell.posX + 1)) && (posY == currentCell.posY))
+		           
+		           || ((posX == (currentCell.posX - 1)) && (posY == (currentCell.posY - 1)))
+		           || ((posX == currentCell.posX )      && (posY == (currentCell.posY - 1)))
+		           || ((posX == (currentCell.posX + 1)) && (posY == (currentCell.posY - 1)))
+		           
+		           ))
+		
+		, count($cell))
+		
+	then
+		currentCell.state = Cell.ALIVE;		
+end 
