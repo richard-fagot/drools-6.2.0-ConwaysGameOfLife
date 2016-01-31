@@ -16,10 +16,10 @@ public final class JWorld extends JPanel {
 	}
 	
 	public void paintComponent(Graphics g) {
-		g.setColor(Color.black);
+		g.setColor(Color.white);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
-		g.setColor(Color.white);
+		g.setColor(Color.black);
 		Cell[] cells = world.getCells();
 		for(int y = 0 ; y < world.getHeight() ; y++){
 			for(int x = 0 ; x < world.getWidth() ; x++){

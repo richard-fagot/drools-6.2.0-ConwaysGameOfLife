@@ -44,6 +44,53 @@ public final class World {
 		return w;
 	}
 	
+	public static World generateStaticWorld() {
+		
+		World world = new World(76, 36);
+		for(int y = 0 ; y < world.height; y++) {
+			for(int x = 0 ; x < world.width; x++) {
+				world.world[x + y*world.width] = new Cell(x, y, Cell.DEAD);
+			}
+		}
+		
+		int[][] LWSS = {{1, 0, 0, 1, 0}
+				     ,  {0, 0, 0, 0, 1}
+				     ,  {1, 0, 0, 0, 1}
+				     ,  {0, 1, 1, 1, 1}
+				     };
+		
+		int[][] antBR = {{0,1,0}
+		              ,{0,0,1}
+		              ,{1,1,1}};
+		
+		int[][] antUR = {{0,1,1}
+						,{1,0,1}
+						,{0,0,1}};
+		int[][] galaxy = {{1,1,0,1,1,1,1,1,1}
+						 ,{1,1,0,1,1,1,1,1,1}
+						 ,{1,1,0,0,0,0,0,0,0}
+						 ,{1,1,0,0,0,0,0,1,1}
+						 ,{1,1,0,0,0,0,0,1,1}
+						 ,{1,1,0,0,0,0,0,1,1}
+						 ,{0,0,0,0,0,0,0,1,1}
+						 ,{1,1,1,1,1,1,0,1,1}
+						 ,{1,1,1,1,1,1,0,1,1}};
+		
+		world.putAnimal(LWSS, 40, 21);
+		world.putAnimal(antUR, 22, 15);
+		world.putAnimal(antUR, 30, 10);
+		world.putAnimal(galaxy, 57, 13);
+		return world;
+	}
+	
+	private void putAnimal(int[][] animal, int posX, int posY) {
+		for (int w = 0 ; w < animal[0].length ; w++) {
+			for(int h = 0 ; h < animal.length ; h++) {
+				world[posX+w + (posY+h)*width].setState(animal[h][w]==1?true:false);
+			}
+		}
+	}
+	
 	public Cell[] getCells() {
 		return world;
 	}
@@ -65,5 +112,23 @@ public final class World {
 		return width;
 	}
 	
+	public static World generateUWorld(int width, int height) {
+		World w = new World(width, height);
+		
+		for(int y = 0 ; y < w.height; y++) {
+			for(int x = 0 ; x < w.width; x++) {
+				w.world[x + y*w.width] = new Cell(x, y, Cell.DEAD);
+			}
+		}
+		
+		
+		int U[][] = {{1,0,1}
+        			,{1,0,1}
+        			,{1,1,1}};
+		
+		w.putAnimal(U, width/2, height/2);
+		
+		return w;
+	}
 	
 }
